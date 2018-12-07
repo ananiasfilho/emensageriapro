@@ -1,0 +1,36 @@
+language: python
+
+python:
+  - 2.7
+
+services: postgresql
+
+env:
+  global:
+# - DJANGO="x.y.z"
+  - DJANGO_SETTINGS_MODULE="emensageriapro.settings"
+  - PYTHONPATH="/home/travis/build/ananiasfilho/emensageriapro"
+  - PIP_USE_MIRRORS=true
+# Last two for OS X, courtesy of stackoverflow.com/a/22697917/419005
+# - CFLAGS=-Qunused-arguments
+# - CPPFLAGS=-Qunused-arguments
+
+install:
+  - pip install -r requirements.txt
+  - pip install coveralls radon
+
+before_script:
+  - psql -c "CREATE DATABASE travisdb;" -U postgres
+
+script:
+  - sh build_emensageriapro.sh
+
+after_success:
+- pip freeze
+- echo Uploading code coverage data ...; coveralls
+- echo Code complexity scores:; radon cc --min B ../emensageriapro
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
