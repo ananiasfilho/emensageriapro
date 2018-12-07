@@ -11,7 +11,7 @@ set -e
 echo -e "DEBUG=on
 SECRET_KEY='2w0qr9j#u2e=q081@sk)^-t3g9p5+k0+k9-b=yx4*aw!j=dsm$'
 #DATABASE_URL=psql://emensageriapro:debug1234@db:5432/emensageriapro_db
-DATABASE_URL=psql://ananias:@localhost:5432/travisdb
+DATABASE_URL=psql://postgres:@localhost:5432/travisdb
 ALLOWED_HOSTS=emensageriapro-dev.org.br
 EMAIL_HOST=smtp.endereco.com.br
 EMAIL_HOST_USER=contato@endereco.com.br
