@@ -4,6 +4,7 @@
 # and an admin user with username 'admin', password 'admin'.
 #
 # Requires that a postgreSQL database has been created for the emensageriapro
+# By: Ananias Filho (ananias@kmee.com.br)
 virtualenv .
 source bin/activate
 set -e
